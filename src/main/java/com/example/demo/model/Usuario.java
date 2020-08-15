@@ -1,9 +1,6 @@
 package com.example.demo.model;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.util.Collection;
 
 @Entity
@@ -16,7 +13,8 @@ public class Usuario {
     private String nome;
     @Column
     private String email;
-    // private Collection<ResultadoDigitoUnico> resultadosDigitoUnico;
+    @OneToMany(mappedBy = "usuario", cascade = CascadeType.ALL)
+    private Collection<ResultadoDigitoUnico> resultadosDigitoUnico;
 
     public int getId() {
         return id;
@@ -42,13 +40,13 @@ public class Usuario {
         this.email = email;
     }
 
-//    public Collection<ResultadoDigitoUnico> getResultadosDigitoUnico() {
-//        return resultadosDigitoUnico;
-//    }
-//
-//    public void setResultadosDigitoUnico(Collection<ResultadoDigitoUnico> resultadosDigitoUnico) {
-//        this.resultadosDigitoUnico = resultadosDigitoUnico;
-//    }
+    public Collection<ResultadoDigitoUnico> getResultadosDigitoUnico() {
+        return resultadosDigitoUnico;
+    }
+
+    public void setResultadosDigitoUnico(Collection<ResultadoDigitoUnico> resultadosDigitoUnico) {
+        this.resultadosDigitoUnico = resultadosDigitoUnico;
+    }
 
 
 }
